@@ -1,0 +1,29 @@
+
+<!-- <app-book-form (bookEmitter) = 'bookListener($event)'></app-book-form> -->
+<div>
+    <label>Filter: </label>
+  <input type="text" [(ngModel)]='filter.title' placeholder='Title'>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Year</th>
+      <th>Author</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr [routerLink]="['/books', book._id]" *ngFor='let book of books | search:filter' [class.selected]='selectedBook === book' >
+      <td>{{book._id}}</td>
+      <td>{{book.title | titleize: false}}</td>
+      <td>{{book.year}}</td>
+      <td>{{book.author.name}}</td>
+      <td (click) = 'onTdClick($event)'>
+        <button (click) = 'removeBook(book)' class="btn btn-danger btn-sm">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- <book-details (updatedBook)='updateSelectedBook($event)' [book]='selectedBook'></book-details> -->

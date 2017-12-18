@@ -1,0 +1,26 @@
+<section>
+  <div *ngIf='errorMessages.length'>
+    <ul>
+      <li class="alert alert-danger" *ngFor='let error of errorMessages'>
+        {{ error }}
+      </li>
+    </ul>
+  </div>
+
+
+  <fieldset>
+    <legend>Create Author</legend>
+
+    <form (submit)='onSubmit(authorForm.value)' #authorForm='ngForm' class="form-group">
+      <div class="form-control">
+        <label for="">Name</label>
+        <input type="text" name='name' [ngModel]='author.name'>
+      </div>
+      <div class="form-control">
+        <label for="">Age</label>
+        <input type="number" name='age' [ngModel]='author.age'>
+      </div>
+      <button>Create Author</button>
+    </form>
+  </fieldset>
+</section>

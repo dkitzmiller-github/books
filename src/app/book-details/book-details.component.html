@@ -1,0 +1,36 @@
+<fieldset *ngIf='book'>
+  <legend>Update Book</legend>
+  <form (submit)='onUpdate(updateBook.value, $event) || updateBook.reset()' #updateBook='ngForm'>
+    <input type="hidden" name="_id" [ngModel]='book._id'>
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input id='title' type="text" class="form-control" name='title' [ngModel]='book.title' #title='ngModel' minlength='4' required>
+      <div *ngIf='(title.touched || title.dirty) && title.errors'>
+        <div *ngIf='title.errors.required' class='alert alert-danger'>You must enter a book title</div>
+        <div *ngIf='title.errors.minlength' class='alert alert-danger'>Title must be at least {{title.errors.minlength.requiredLength}} characters in length.  You only have {{title.errors.minlength.actualLength}}</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="author">Author:</label>
+      <input id='author' type="text" name='author' [ngModel]='book.author' #author='ngModel' class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="year">Year:</label>
+      <input id="year" type="number" name='year' [ngModel]='book.year' #year='ngModel' class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="pages">Pages:</label>
+      <input id='pages' type="number" name='pages' [ngModel]='book.pages' #pages='ngModel' class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="publisher">Publisher:</label>
+      <input id='publisher' type="text" name='publisher' [ngModel]='book.publisher' #publisher='ngModel' class="form-control" minlength='3' required>
+      <div *ngIf='(publisher.touched || publisher.dirty) && publisher.errors'>
+        <div *ngIf='publisher.errors.required' class='alert alert-danger'>You must enter a book publisher</div>
+        <div *ngIf='publisher.errors.minlength' class='alert alert-danger'>publisher must be at least {{publisher.errors.minlength.requiredLength}} characters in length.  You only have {{publisher.errors.minlength.actualLength}}</div>
+      </div>
+    </div>
+    <button [disabled]='updateBook.invalid' [hidden]='updateBook.invalid' class="btn btn-md btn-success">Update</button>
+    <button routerLink='/books' (click)='this.book = null' class='btn pull-right btn-success'>Cancel</button>
+  </form>
+</fieldset>

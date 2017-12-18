@@ -1,0 +1,22 @@
+<section class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name </th>
+        <th>Age</th>
+        <th>Books</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let author of authors'>
+        <td>{{author.name}}</td>
+        <td>{{author.age}}</td>
+        <td>
+          Books
+        </td>
+        <td>Actions</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

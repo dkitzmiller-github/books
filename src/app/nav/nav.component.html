@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">BookApp</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li *ngIf='!isAuthed()'><a routerLink='/home'>Home</a></li>
+      <li><a routerLink='/authors'>Authors</a></li>
+      <li><a routerLink='/authors/new'>Create Author</a></li>
+      <li><a routerLink='/'>Books</a></li>
+      <li><a routerLink='/books/new'>Create a Book</a></li>
+      <li *ngIf='isAuthed()'>
+          <button (click)='logout()' class='btn btn-sm'>Logout</button>
+      </li>
+    </ul>
+  </div>
+</nav>
